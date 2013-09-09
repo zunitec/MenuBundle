@@ -1,0 +1,39 @@
+{
+    "name": "zuni/menubundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "description": "Symfony MenuBundle",
+    "keywords": ["menu","menu manager"],
+    "homepage": "https://github.com/zunitec/MenuBundle",
+    "authors": [
+        {
+            "name": "Zunitec Tecnologias",
+            "email": "zunitec@zunitec.com.br",
+            "homepage": "http://zunitec.com.br",
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*",
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/doctrine-bundle": "1.2.*",
+        "twig/extensions": "1.0.*",
+        "symfony/assetic-bundle": "2.3.*",
+        "symfony/swiftmailer-bundle": "2.3.*",
+        "symfony/monolog-bundle": "2.3.*",
+        "sensio/distribution-bundle": "2.3.*",
+        "sensio/framework-extra-bundle": "2.3.*",
+        "sensio/generator-bundle": "2.3.*",
+        "incenteev/composer-parameter-handler": "~2.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "Zuni\\MenuBundle": "" }
+    },
+    "target-dir": "Zuni/MenuBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

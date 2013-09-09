@@ -1,0 +1,26 @@
+{#
+    @var menus MenuCollection
+    @var breadcrumb MenuCollection
+    @var translation string
+#}
+
+{% trans_default_domain translation %}
+
+<ul class="sub-menu">
+    {% for menu in menus %}
+    <li  {% if menu.isSelected(breadcrumb) %}class="active {% if menu.children %}open{% endif %}"{% endif %}>
+        <a {% if menu.route %}href="{{path(menu.route)}}"{% endif %}>
+            {% if menu.icon %}
+                <i class="icon-{{menu.icon}}"></i>
+            {% endif %}
+            {{menu.title|trans}}
+            {% if menu.children %}
+            <span class="arrow {% if menu.isSelected(breadcrumb) %}open{% endif %}"></span>
+            {% endif %}
+        </a>
+        {% if menu.children %}
+            {% include 'ZuniMenuBundle:Menu:childrenMenu.html.twig' with {'menus': menu.children ,'breadcrumb': breadcrumb, "translation" : translation} %}
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul> 	
