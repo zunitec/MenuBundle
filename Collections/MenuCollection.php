@@ -244,9 +244,14 @@ class MenuCollection extends ArrayObject
             array("name" => $route."_show" , "action" => "route.show"),
         );
         
-        $routeBranches = self::getValue($menuArray, "branches", $routeBranchesDefault);
+        $routeBranches = self::getValue($menuArray, "branches", null);
         
-        $menu = new Menu($name, $title, $route, $icon, $action, $active, $routeBranches);
+        if($routeBranches)
+        {
+            $routeBranchesDefault = array_merge($routeBranches, $routeBranchesDefault);
+        }
+        
+        $menu = new Menu($name, $title, $route, $icon, $action, $active, $routeBranchesDefault);
         
         if ($parent)
         {
