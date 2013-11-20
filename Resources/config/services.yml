@@ -1,0 +1,25 @@
+services:
+
+    # Fabrica de menu zuni
+    zuni_menu.listener.filter_options:
+        class: Zuni\MenuBundle\EventListener\MenuFilterOptionsListener
+        tags:
+            - {name: kernel.event_subscriber}
+        
+    # Fabrica de menu zuni
+    zuni_menu.factory:
+        class: Zuni\MenuBundle\Factory\MenuFactory
+        arguments: ["@event_dispatcher", "@router"]
+        
+    # Delegate de loaders de menu
+    menu.loader.resolver:
+        class: Zuni\MenuBundle\Resolver\MenuLoaderResolver
+        arguments: ["@service_container"]
+    
+    # Loader de menu YAML
+    zuni_menu.menu.loader_yaml:
+        class: Zuni\MenuBundle\Loaders\MenuLoaderYaml
+        arguments: ["@service_container"]
+        tags:
+            - { name: zuni_menu.loader }
+        

@@ -3,7 +3,7 @@
 namespace Zuni\MenuBundle\Exceptions;
 
 /**
- * @author Fábio Lemos Elizandro
+ * @author FÃ¡bio Lemos Elizandro 
  */
 class MenuException extends \RuntimeException
 {
