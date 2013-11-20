@@ -94,6 +94,8 @@ abstract class AbstractMenuBuilder implements MenuBuilderInterface
         
         $menuBuilt = $this->builder($menu, $request);
 
+        $menuBuilt->setCurrentUri($request->getPathInfo());
+        
         $dispacher->dispatch(
                 ZuniMenuEvents::MENU_POST_BUILDER, new MenuBuiltFilterEvent($this, $menu, $menuBuilt)
         );
