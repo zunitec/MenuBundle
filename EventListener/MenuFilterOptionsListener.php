@@ -17,7 +17,7 @@ class MenuFilterOptionsListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            ZuniMenuEvents::MENU_ITEN_PRE_BUILDER => "filterOptions"
+            ZuniMenuEvents::MENU_ITEN_PRE_BUILDER => array(array('filterOptions', 50))
         );
     }
 
