@@ -44,7 +44,7 @@ class MenuFilterOptionsListener implements EventSubscriberInterface
         if (isset($options['class'])) {
             $options['attributes']['class'] = isset($options['attributes']['class']) ? $options['attributes']['class'] . $options['class'] : $options['class'];
         } else {
-            $options['attributes']['class'] = array();
+            $options['attributes']['class'] = "";
         }
 
         if (isset($options['role'])) {
