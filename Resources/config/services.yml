@@ -1,4 +1,11 @@
 services:
+    
+    # Ativador de menu
+    zuni_menu.listener.menu_current:
+        class: Zuni\MenuBundle\EventListener\MenuCurrentListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: kernel.event_subscriber}
 
     # Fabrica de menu zuni
     zuni_menu.listener.filter_options:

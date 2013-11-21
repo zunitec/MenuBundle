@@ -53,6 +53,12 @@ class MenuFilterOptionsListener implements EventSubscriberInterface
             $options['extras']['role'] = array();
         }
 
+        if (isset($options['route'])) {
+            $options['extras']['route'] = $options['route'];
+        }else{
+            $options['extras']['route'] = null;
+        }
+        
         $event->setOptions($options);
     }
 
