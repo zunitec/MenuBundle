@@ -48,7 +48,7 @@ class MenuCurrentListener implements EventSubscriberInterface
             $request->getSession()->remove('alternative_route');
         }
 
-        $this->activeCurrent($event->getMenuBuilt(), $this->container->get("request"));
+        $this->activeCurrent($event->getMenuBuilt(), $this->container->get("request"), $route);
     }
 
     private function activeCurrent(ItemInterface $item, Request $request, $route)
