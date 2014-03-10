@@ -39,18 +39,27 @@ class MenuCurrentListener implements EventSubscriberInterface
 
     public function index(MenuBuiltFilterEvent $event)
     {
+        $request = $this->container->get("request");
+
+        //POG pra forçar selecao do menu
+        $route = $request->get("_route");
+        if ($request->getSession()->get('alternative_route')) {
+            $route = $request->getSession()->get('alternative_route');
+            $request->getSession()->remove('alternative_route');
+        }
+
         $this->activeCurrent($event->getMenuBuilt(), $this->container->get("request"));
     }
 
-    private function activeCurrent(ItemInterface $item, Request $request)
+    private function activeCurrent(ItemInterface $item, Request $request, $route)
     {
         $routes = \array_merge($item->getExtra("branches", array()), array($item->getExtra("route")));
 
-        if (\in_array($request->get("_route"), $routes)) {
+        if (\in_array($route, $routes)) {
             $item->setCurrent(true);
         } else {
             foreach ($item->getChildren() as $child) {
-                $this->activeCurrent($child, $request);
+                $this->activeCurrent($child, $request, $route);
             }
         }
     }
