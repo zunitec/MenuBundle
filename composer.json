@@ -3,7 +3,7 @@
     "license": "MIT",
     "type": "symfony-bundle",
     "description": "Symfony MenuBundle",
-    "keywords": ["menu","menu manager", "zunimenu"],
+    "keywords": ["menu","menu manager"],
     "homepage": "https://github.com/zunitec/MenuBundle",
     "authors": [
         {
