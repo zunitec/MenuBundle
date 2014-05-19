@@ -21,7 +21,7 @@ class MenuSecurityListener implements EventSubscriberInterface
      * @var string
      */
     private $menuName;
-    
+
     /**
      *
      * @var ContainerInterface
@@ -78,8 +78,21 @@ class MenuSecurityListener implements EventSubscriberInterface
         foreach ($item->getChildren() as $child) {
             $this->menuSecurity($child);
         }
+
+        //Para corrigir problema ao montar menu que tinha sub sub menu que não estava liberado e mostrava mesmo assim
+        if ($item->getChildren()) {
+            $display = false;
+            foreach ($item->getChildren() as $child) {
+                if ($child->isDisplayed()) {
+                    $display = true;
+                    break;
+                }
+            }
+            $item->setDisplay($display);
+            $item->setDisplayChildren($display);
+        }
     }
-    
+
     /**
      * Remove os menus que n~ao est~ao sendo utilizados
      * 
@@ -100,7 +113,7 @@ class MenuSecurityListener implements EventSubscriberInterface
             $item->setDisplay($display);
         }
     }
-    
+
     /**
      * Retorna a lista de roles do menu
      * 
@@ -110,7 +123,7 @@ class MenuSecurityListener implements EventSubscriberInterface
     private function getRoleFromMenuItem(\Knp\Menu\ItemInterface $menu)
     {
         $role = $menu->getExtra("role", array());
-        
+
         return \is_array($role) ? $role : array($role);
     }
 
